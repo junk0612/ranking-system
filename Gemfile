@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', github: 'rails/rails', branch: 'master'
+gem 'rails'
 
-gem 'bootsnap'
 gem 'coffee-rails'
 gem 'devise'
 gem 'jbuilder'
