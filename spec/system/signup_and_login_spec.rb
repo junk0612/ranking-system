@@ -15,6 +15,6 @@ RSpec.describe 'Signup and login', type: :system do
 
     click_on 'Sign up'
 
-    expect(page).to have_current_path(root_path)
+    expect(page).to have_current_path(mypage_path)
   end
 end
