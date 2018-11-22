@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_054542) do
+ActiveRecord::Schema.define(version: 2018_11_22_094504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chart_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "game_id"
+    t.integer "display_order", null: false
+    t.datetime "created_at", null: false
+    t.index ["game_id"], name: "index_chart_types_on_game_id"
+  end
+
+  create_table "charts", force: :cascade do |t|
+    t.float "difficulty", null: false
+    t.bigint "music_id"
+    t.bigint "chart_type_id"
+    t.datetime "created_at", null: false
+    t.index ["chart_type_id"], name: "index_charts_on_chart_type_id"
+    t.index ["music_id"], name: "index_charts_on_music_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.index ["game_id"], name: "index_musics_on_game_id"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +56,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_054542) do
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chart_types", "games"
+  add_foreign_key "charts", "chart_types"
+  add_foreign_key "charts", "musics"
+  add_foreign_key "musics", "games"
 end
