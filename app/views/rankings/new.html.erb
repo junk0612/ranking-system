@@ -1,0 +1,13 @@
+<h1>New Ranking</h1>
+<%= form_with model: Ranking.new, method: :post do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :started_at %>
+  <%= form.datetime_field :started_at %>
+
+  <%= form.label :ended_at %>
+  <%= form.datetime_field :ended_at %>
+
+  <%= form.submit '作成' %>
+<% end %>

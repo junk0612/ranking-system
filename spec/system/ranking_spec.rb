@@ -12,6 +12,6 @@ RSpec.describe 'Ranking', type: :system do
 
     click_on '作成'
 
-    expect(page).to have_current_path(ranking_path(Ranking.last))
+    expect(page).to have_current_path(ranking_path(Ranking.all.reload.last))
   end
 end
