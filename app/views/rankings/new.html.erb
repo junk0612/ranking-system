@@ -9,5 +9,14 @@
   <%= form.label :ended_at %>
   <%= form.datetime_field :ended_at %>
 
+  <%= form.label :game %>
+  <%= form.select :game, Game.all.map {|game| [game.title, game.id] } %>
+
+  <%= form.label :music %>
+  <%= form.select :music, Music.all.map {|music| [music.title, music.id] } %>
+
+  <%= form.label :chart %>
+  <%= form.select :chart, Chart.all.map {|chart| [chart.chart_type.name, chart.id] } %>
+
   <%= form.submit '作成' %>
 <% end %>
