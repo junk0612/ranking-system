@@ -21,7 +21,7 @@ require 'supports/capybara'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -66,4 +66,7 @@ RSpec.configure do |config|
       driven_by :selenium, using: :chrome, screen_size: [1400, 1400], options: {desired_capabilities: caps}
     end
   end
+
+  config.include ::SystemSpec::SessionHelper, type: :system
+  config.include ActiveSupport::Testing::TimeHelpers
 end
