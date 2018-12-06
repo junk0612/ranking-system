@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_021939) do
+ActiveRecord::Schema.define(version: 2018_12_06_024205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,20 @@ ActiveRecord::Schema.define(version: 2018_12_06_021939) do
     t.index ["player_id"], name: "index_rankings_on_player_id"
   end
 
+  create_table "target_charts", force: :cascade do |t|
+    t.bigint "ranking_id"
+    t.bigint "chart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chart_id"], name: "index_target_charts_on_chart_id"
+    t.index ["ranking_id"], name: "index_target_charts_on_ranking_id"
+  end
+
   add_foreign_key "chart_types", "games"
   add_foreign_key "charts", "chart_types"
   add_foreign_key "charts", "musics"
   add_foreign_key "musics", "games"
   add_foreign_key "rankings", "players"
+  add_foreign_key "target_charts", "charts"
+  add_foreign_key "target_charts", "rankings"
 end
