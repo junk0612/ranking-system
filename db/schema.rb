@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_094504) do
+ActiveRecord::Schema.define(version: 2018_12_06_021939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,8 +56,19 @@ ActiveRecord::Schema.define(version: 2018_11_22_094504) do
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
   end
 
+  create_table "rankings", force: :cascade do |t|
+    t.bigint "player_id"
+    t.string "name", null: false
+    t.datetime "started_at", null: false
+    t.datetime "ended_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_rankings_on_player_id"
+  end
+
   add_foreign_key "chart_types", "games"
   add_foreign_key "charts", "chart_types"
   add_foreign_key "charts", "musics"
   add_foreign_key "musics", "games"
+  add_foreign_key "rankings", "players"
 end
