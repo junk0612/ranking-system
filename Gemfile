@@ -3,7 +3,6 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 gem 'rails'
 
-gem 'coffee-rails'
 gem 'devise'
 gem 'jbuilder'
 gem 'omniauth-twitter'
@@ -12,7 +11,6 @@ gem 'puma'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'tzinfo-data'
-gem 'uglifier'
 
 group :development, :test do
   gem 'byebug'
