@@ -1,1 +1,5 @@
-作成されました
+<%= @ranking.name %>
+
+<%= form_with url: ranking_ranking_participations_path(ranking_id: @ranking.id), method: :post do |form| %>
+  <%= form.submit '参加' %>
+<% end %>
