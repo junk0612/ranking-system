@@ -1,4 +1,8 @@
 class RankingsController < ApplicationController
+  def index
+    @rankings = Ranking.all.order(updated_at: :desc)
+  end
+
   def show
     @ranking = Ranking.find(params[:id])
   end
