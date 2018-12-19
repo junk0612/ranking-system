@@ -8,7 +8,7 @@ class RankingsController < ApplicationController
   def create
     ranking = current_player.rankings.new(params.require(:ranking).permit(:name, :started_at, :ended_at))
     if ranking.save
-      redirect_to ranking_path(ranking)
+      redirect_to mypage_path
     else
       pp ranking.errors
     end
