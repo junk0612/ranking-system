@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_155454) do
+ActiveRecord::Schema.define(version: 2018_12_27_025145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 2018_12_19_155454) do
     t.index ["player_id"], name: "index_rankings_on_player_id"
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "point"
+    t.bigint "ranking_participation_id"
+    t.bigint "target_chart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ranking_participation_id"], name: "index_scores_on_ranking_participation_id"
+    t.index ["target_chart_id"], name: "index_scores_on_target_chart_id"
+  end
+
   create_table "target_charts", force: :cascade do |t|
     t.bigint "ranking_id"
     t.bigint "chart_id"
@@ -91,6 +101,8 @@ ActiveRecord::Schema.define(version: 2018_12_19_155454) do
   add_foreign_key "ranking_participations", "players"
   add_foreign_key "ranking_participations", "rankings"
   add_foreign_key "rankings", "players"
+  add_foreign_key "scores", "ranking_participations"
+  add_foreign_key "scores", "target_charts"
   add_foreign_key "target_charts", "charts"
   add_foreign_key "target_charts", "rankings"
 end

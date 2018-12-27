@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :mypage, only: :show
   resources :rankings, only: %i(index show new create) do
     resources :ranking_participations, only: %i(create)
+    resources :scores, only: %i(new create edit update)
   end
 
   if Rails.env.development?

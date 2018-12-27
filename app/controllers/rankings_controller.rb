@@ -11,6 +11,10 @@ class RankingsController < ApplicationController
 
   def create
     ranking = current_player.rankings.new(params.require(:ranking).permit(:name, :started_at, :ended_at))
+    game = Game.find(params.require(:ranking).permit(:game)[:game])
+    music = game.musics.find(params.require(:ranking).permit(:music)[:music])
+    chart = music.charts.find(params.require(:ranking).permit(:chart)[:chart])
+    ranking.target_charts.new(chart: chart)
     if ranking.save
       redirect_to mypage_path
     else
