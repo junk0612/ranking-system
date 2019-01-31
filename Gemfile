@@ -4,6 +4,7 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 gem 'rails'
 
 gem 'devise'
+gem 'gon'
 gem 'jbuilder'
 gem 'omniauth-twitter'
 gem 'pg'
