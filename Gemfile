@@ -11,6 +11,7 @@ gem 'puma'
 gem 'sass-rails'
 gem 'turbolinks'
 gem 'tzinfo-data'
+gem 'webpacker'
 
 group :development, :test do
   gem 'byebug'
