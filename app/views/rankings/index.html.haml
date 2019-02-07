@@ -1,0 +1,4 @@
+%ul
+  - @rankings.each do |ranking|
+    %li
+      = link_to ranking.name, ranking_path(ranking)

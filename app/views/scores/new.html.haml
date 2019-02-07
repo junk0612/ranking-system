@@ -1,0 +1,12 @@
+%h1 スコア登録
+= form_with url: ranking_scores_path, method: :post do |form|
+  = form.label :music
+  = form.select :music, @ranking.target_charts.includes(chart: :music).pluck(:title, :music_id)
+
+  = form.label :chart
+  = form.select :chart, @ranking.target_charts.includes(chart: :chart_type).pluck(:name, :chart_id)
+
+  = form.label :point
+  = form.text_field :point
+
+  = form.submit '登録'
