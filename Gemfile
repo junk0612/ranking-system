@@ -4,7 +4,6 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 gem 'rails'
 
 gem 'devise'
-gem 'erb2haml'
 gem 'gon'
 gem 'haml-rails'
 gem 'jbuilder'
