@@ -11,7 +11,6 @@ gem 'omniauth-twitter'
 gem 'pg'
 gem 'puma'
 gem 'sass-rails'
-gem 'turbolinks'
 gem 'tzinfo-data'
 gem 'webpacker'
 

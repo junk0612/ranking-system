@@ -1,6 +1,7 @@
 FROM ruby:2.5.3
 
 ENV APP_PATH=/app
+ENV EDITOR=vim
 
 WORKDIR ${APP_PATH}
 
@@ -21,4 +22,5 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install no
 
 COPY Gemfile Gemfile.lock ${APP_PATH}/
 RUN bundle install
+RUN yarn install
 COPY . /app
