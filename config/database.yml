@@ -84,6 +84,6 @@ test:
 production:
   <<: *default
   database: ranking-system_production
-  username: ranking-system
+  username: <%= ENV['RANKING-SYSTEM_DATABASE_USER'] %>
   password: <%= ENV['RANKING-SYSTEM_DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV['RANKING-SYSTEM_DATABASE_HOST'] %>

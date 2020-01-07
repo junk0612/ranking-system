@@ -8,12 +8,14 @@ services:
     environment:
       - "DATABASE_USER=postgres"
       - "DATABASE_PASSWORD=mysecretpassword1234"
+      - "RANKING-SYSTEM_DATABASE_URL=db"
+      - "RANKING-SYSTEM_DATABASE_PASSWORD=mysecretpassword1234"
     links:
       - db
     volumes:
       - .:/app:cached
     stdin_open: true
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0' -e production
 
   db:
     image: postgres:10.1
